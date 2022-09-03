@@ -1,0 +1,67 @@
+.swiper-button-next,
+.swiper-button-prev {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.slider-image-style {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}
+
+/* mobile screen view */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .slider-image-style {
+        height: 400px;
+    }
+}
+
+/* tablet screen view */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .slider-image-style {
+        height: 400px;
+    }
+}
+
+/* laptop screen view */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .slider-image-style {
+        height: 500px;
+    }
+}
+
+/* desktop screen view */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .slider-image-style {
+        height: 600px;
+    }
+}
+
+/* large screen view */
+@media screen and (min-width: 1281px) {
+    .slider-image-style {
+        height: 700px;
+    }
+}
