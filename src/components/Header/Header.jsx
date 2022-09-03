@@ -44,7 +44,7 @@ const Header = () => {
                         </span>
                     </div>
                     <ul
-                        className={`lg:flex lg:items-center z-[1] lg:z-auto lg:static absolute bg-white w-full left-0 lg:w-auto lg:py-0 py-4 lg:pl-0 pl-7 lg:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500 ${
+                        className={`lg:flex lg:items-center z-[100] lg:z-auto lg:static absolute bg-white w-full left-0 lg:w-auto lg:py-0 py-4 lg:pl-0 pl-7 lg:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500 ${
                             showMenu === false ? 'top-[80px] opacity-100' : ''
                         }`}
                     >
