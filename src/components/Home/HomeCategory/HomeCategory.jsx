@@ -32,7 +32,7 @@ const HomeCategory = () => {
                                             {data.categoryName}
                                         </span>
                                     </h2>
-                                    <Link to={`/${data.id}`}>
+                                    <Link to={`/${data.categoryName}`}>
                                         <button className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-5 rounded mt-2">
                                             Discover Now
                                         </button>

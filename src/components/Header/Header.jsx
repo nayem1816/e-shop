@@ -96,6 +96,16 @@ const Header = () => {
                                 PANT
                             </Link>
                         </li>
+                        {login === true && (
+                            <li className="mx-5 my-6 lg:my-0">
+                                <Link
+                                    className="text-xl hover:text-cyan-500 duration-500"
+                                    to="/dashboard"
+                                >
+                                    DASHBOARD
+                                </Link>
+                            </li>
+                        )}
                         <li className="mx-5 my-6 lg:my-0">
                             <Link
                                 className="text-xl hover:text-cyan-500 duration-500 flex items-center"

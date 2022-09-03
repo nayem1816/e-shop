@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Shirt = () => {
-    return (
-        <div>
-            <h2>Shirt</h2>
-        </div>
-    );
+    return <div>shirts</div>;
 };
 
 export default Shirt;
