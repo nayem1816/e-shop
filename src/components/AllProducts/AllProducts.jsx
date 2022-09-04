@@ -4,9 +4,9 @@ import ProductCard from './../Card/ProductCard/ProductCard';
 
 const AllProducts = () => {
     return (
-        <div className="">
+        <>
             <div className="bg-black">
-                <div className="all-product-heading py-20">
+                <div className="py-20">
                     <h2 className="text-2xl text-white text-center">
                         All Products
                     </h2>
@@ -19,7 +19,7 @@ const AllProducts = () => {
                     ))}
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
