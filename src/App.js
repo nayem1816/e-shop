@@ -8,6 +8,7 @@ import Shirt from './components/Shirts/Shirt';
 import Polo from './components/Polo/Polo';
 import Jacket from './components/Jacket/Jacket';
 import Pant from './components/Pants/Pant';
+import Footer from './components/Footer/Footer';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/jacket" element={<Jacket />} />
                 <Route path="/pant" element={<Pant />} />
             </Routes>
+            <Footer />
         </div>
     );
 }
