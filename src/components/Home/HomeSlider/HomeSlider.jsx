@@ -40,11 +40,11 @@ const imageData = [
 
 const HomeSlider = () => {
     return (
-        <div>
+        <>
             <Swiper
                 navigation={true}
                 autoplay={{
-                    delay: 2500,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
                 modules={[Navigation, Autoplay]}
@@ -60,7 +60,7 @@ const HomeSlider = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </>
     );
 };
 

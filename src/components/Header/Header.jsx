@@ -1,146 +1,107 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import eShopLogo from '../../images/Logo/e-shop-logo.png';
-import { HiMenu } from 'react-icons/hi';
-import { IoClose } from 'react-icons/io5';
 import { FaShoppingCart } from 'react-icons/fa';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 
 const Header = () => {
-    const [showMenu, setShowMenu] = useState(true);
     const [login, setLogin] = useState(false);
-    const [cart, setCart] = useState(0);
-
-    const handleMenu = () => {
-        setShowMenu(!showMenu);
-    };
 
     const handleLogin = () => {
         setLogin(!login);
     };
 
-    useEffect(() => {
-        setCart(cart);
-    }, [cart]);
+    const totalCart = useSelector((state) => state.cartReducer.cart.length);
 
     return (
-        <div className="navbar shadow bg-white">
-            <div className="container mx-auto">
-                <nav className="p-5 bg-white lg:flex lg:items-center lg:justify-between">
-                    <div className="nav-logo mx-5 flex justify-between items-center">
-                        <Link to="/" className="brand-logo">
-                            <img
-                                className="h-16 inline"
-                                src={eShopLogo}
-                                alt="logo"
-                            />
-                        </Link>
-                        <span className="mobile-menu text-3xl cursor-pointer lg:hidden block mx-2">
-                            {showMenu ? (
-                                <HiMenu onClick={handleMenu} />
-                            ) : (
-                                <IoClose onClick={handleMenu} />
-                            )}
-                        </span>
-                    </div>
-                    <ul
-                        className={`lg:flex lg:items-center z-[100] lg:z-auto lg:static absolute bg-white w-full left-0 lg:w-auto lg:py-0 py-4 lg:pl-0 pl-7 lg:opacity-100 opacity-0 top-[-400] transition-all ease-in duration-500 ${
-                            showMenu === false ? 'top-[80px] opacity-100' : ''
-                        }`}
+        <Navbar className="container" rounded={true}>
+            <Navbar.Brand href="/">
+                <img className="h-16 inline" src={eShopLogo} alt="logo" />
+            </Navbar.Brand>
+            <div className="flex md:order-2 gap-3">
+                {login === false ? (
+                    <button
+                        onClick={handleLogin}
+                        className="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-5 hover:bg-cyan-500 rounded"
                     >
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500"
-                                to="/"
-                            >
-                                HOME
-                            </Link>
-                        </li>
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500"
-                                to="/all-products"
-                            >
-                                ALL PRODUCTS
-                            </Link>
-                        </li>
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500"
-                                to="/shirt"
-                            >
-                                SHIRT
-                            </Link>
-                        </li>
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500"
-                                to="/polo"
-                            >
-                                POLO
-                            </Link>
-                        </li>
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500"
-                                to="/jacket"
-                            >
-                                JACKET
-                            </Link>
-                        </li>
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500"
-                                to="/pant"
-                            >
-                                PANT
-                            </Link>
-                        </li>
-                        {login === true && (
-                            <li className="mx-5 my-6 lg:my-0">
-                                <Link
-                                    className="text-xl hover:text-cyan-500 duration-500"
-                                    to="/dashboard"
-                                >
-                                    DASHBOARD
-                                </Link>
-                            </li>
-                        )}
-                        <li className="mx-5 my-6 lg:my-0">
-                            <Link
-                                className="text-xl hover:text-cyan-500 duration-500 flex items-center"
-                                to="/cart"
-                            >
-                                <FaShoppingCart />
-                                <span>
-                                    <sup className="text-xs ml-1">{cart}</sup>
-                                </span>
-                            </Link>
-                        </li>
+                        LOGIN
+                    </button>
+                ) : (
+                    <div className="flex gap-3 items-center">
+                        <Link
+                            className="text-2xl hover:text-cyan-500 duration-500 flex items-center "
+                            to="/cart"
+                        >
+                            <FaShoppingCart />
+                            <span>
+                                <sup className="text-xs ml-1">{totalCart}</sup>
+                            </span>
+                        </Link>
 
-                        {login === false ? (
-                            <button
-                                onClick={handleLogin}
-                                className="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-5 hover:bg-cyan-500 rounded"
-                            >
-                                LOGIN
-                            </button>
-                        ) : (
-                            <div
-                                onClick={handleLogin}
-                                className="overflow-hidden"
-                            >
-                                <img
-                                    className="inline-block mx-5 h-11 w-11 rounded-full ring-2 ring-white cursor-pointer"
-                                    src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt=""
+                        <Dropdown
+                            arrowIcon={false}
+                            inline={true}
+                            label={
+                                <Avatar
+                                    alt="User settings"
+                                    img="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    rounded={true}
                                 />
-                            </div>
-                        )}
-                    </ul>
-                </nav>
+                            }
+                        >
+                            <Dropdown.Header>
+                                <span className="block text-sm">
+                                    Md Nayem Hossain
+                                </span>
+                                <span className="block truncate text-sm font-medium">
+                                    name@gmail.com
+                                </span>
+                            </Dropdown.Header>
+                            <Dropdown.Item>Dashboard</Dropdown.Item>
+                            <Dropdown.Item>Settings</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={handleLogin}>
+                                Sign out
+                            </Dropdown.Item>
+                        </Dropdown>
+                    </div>
+                )}
+                <Navbar.Toggle />
             </div>
-        </div>
+            <Navbar.Collapse>
+                <Navbar.Link href="/" active={true}>
+                    <span className="text-lg hover:text-cyan-500 duration-500">
+                        Home
+                    </span>
+                </Navbar.Link>
+                <Navbar.Link href="/all-products">
+                    <span className="text-lg hover:text-cyan-500 duration-500">
+                        All Products
+                    </span>
+                </Navbar.Link>
+                <Navbar.Link href="/shirt">
+                    <span className="text-lg hover:text-cyan-500 duration-500">
+                        Shirts
+                    </span>
+                </Navbar.Link>
+                <Navbar.Link href="/polo">
+                    <span className="text-lg hover:text-cyan-500 duration-500">
+                        Polo
+                    </span>
+                </Navbar.Link>
+                <Navbar.Link href="/jacket">
+                    <span className="text-lg hover:text-cyan-500 duration-500">
+                        Jacket
+                    </span>
+                </Navbar.Link>
+                <Navbar.Link href="/pant">
+                    <span className="text-lg hover:text-cyan-500 duration-500">
+                        Pant
+                    </span>
+                </Navbar.Link>
+            </Navbar.Collapse>
+        </Navbar>
     );
 };
 
