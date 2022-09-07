@@ -11,6 +11,8 @@ import Pant from './components/Pants/Pant';
 import Footer from './components/Footer/Footer';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import Cart from './components/Cart/Cart';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (
@@ -19,6 +21,7 @@ function App() {
             className="main grid grid-cols-1 content-between"
         >
             <div className="">
+                <ToastContainer />
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
     clearCart,
@@ -8,15 +8,20 @@ import {
 } from '../../redux/features/cartSlice';
 
 const Cart = () => {
+    const [data, setData] = useState([]);
     const cartData = useSelector((state) => state.cartReducer.cart);
+
+    useEffect(() => {
+        setData(cartData);
+    }, [cartData]);
+
     const dispatch = useDispatch();
 
-    const totalQuantity = cartData.reduce(
+    const totalQuantity = data.reduce(
         (total, item) => total + item.quantity,
         0
     );
-
-    const totalPrice = cartData.reduce(
+    const totalPrice = data.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     );
@@ -24,15 +29,12 @@ const Cart = () => {
     const handlePlusBtn = (id) => {
         dispatch(updateCart({ typeAction: 'plus', id }));
     };
-
     const handleMinusBtn = (id) => {
         dispatch(updateCart({ typeAction: 'minus', id }));
     };
-
     const handleRemoveBtn = (id) => {
         dispatch(removeFromCart({ id }));
     };
-
     const handleClearBtn = () => {
         dispatch(clearCart());
     };
@@ -40,11 +42,11 @@ const Cart = () => {
     return (
         <div>
             <div className="container p-8 mx-auto mt-12 bg-white">
-                {cartData.length > 0 ? (
+                {data.length > 0 ? (
                     <div className="w-full overflow-x-auto">
                         <div className="my-2">
                             <h3 className="text-xl font-bold tracking-wider">
-                                Shopping Cart {cartData.length} item
+                                Shopping Cart {data.length} item
                             </h3>
                         </div>
                         <table className="w-full shadow-inner">
@@ -65,7 +67,7 @@ const Cart = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {cartData.map((item) => (
+                                {data.map((item) => (
                                     <tr key={item.id}>
                                         <td className="p-4 px-6 text-center whitespace-nowrap">
                                             {item.name}

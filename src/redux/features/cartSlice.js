@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        cart: [],
+        cart: localStorage.getItem('cart')
+            ? JSON.parse(localStorage.getItem('cart'))
+            : [],
     },
     reducers: {
         addToCart: (state, action) => {
@@ -13,10 +16,29 @@ export const cartSlice = createSlice({
             );
 
             if (isProductInCart) {
-                alert('This product is already in your cart');
+                // alert('This product is already in your cart');
+                toast.info('This product is already in your cart', {
+                    position: 'bottom-center',
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
             } else {
                 state.cart.push({ ...action.payload, quantity: 1 });
+                toast.success(`${action.payload.name} added to cart`, {
+                    position: 'bottom-center',
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
             }
+
+            // add data to local storage
+            localStorage.setItem('cart', JSON.stringify(state.cart));
         },
         updateCart: (state, action) => {
             const id = action.payload.id;
@@ -35,6 +57,8 @@ export const cartSlice = createSlice({
                     alert('Quantity cannot be less than 1');
                 }
             }
+            // add data to local storage
+            localStorage.setItem('cart', JSON.stringify(state.cart));
         },
         removeFromCart: (state, action) => {
             const id = action.payload.id;
@@ -47,9 +71,29 @@ export const cartSlice = createSlice({
             } else {
                 alert('This product is not in your cart');
             }
+            toast.warn(`${state.cart[0].name} remove from cart`, {
+                position: 'bottom-center',
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            // add data to local storage
+            localStorage.setItem('cart', JSON.stringify(state.cart));
         },
         clearCart: (state) => {
             state.cart = [];
+            toast.error('All product remove from cart', {
+                position: 'bottom-center',
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            // add data to local storage
+            localStorage.setItem('cart', JSON.stringify(state.cart));
         },
     },
 });
