@@ -13,6 +13,9 @@ import SingleProduct from './components/SingleProduct/SingleProduct';
 import Cart from './components/Cart/Cart';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Login from './components/Login/Login';
+import SignUp from './components/Login/SignUp';
+import Protected from './components/Login/Protected';
 
 function App() {
     return (
@@ -25,13 +28,22 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
                     <Route path="/all-products" element={<AllProducts />} />
                     <Route path="/shirt" element={<Shirt />} />
                     <Route path="/polo" element={<Polo />} />
                     <Route path="/jacket" element={<Jacket />} />
                     <Route path="/pant" element={<Pant />} />
                     <Route path="/product/:id" element={<SingleProduct />} />
-                    <Route path="/cart" element={<Cart />} />
+                    <Route
+                        path="/cart"
+                        element={
+                            <Protected>
+                                <Cart />
+                            </Protected>
+                        }
+                    />
                     <Route path="*" element={<h1>404 Not Found</h1>} />
                 </Routes>
             </div>
