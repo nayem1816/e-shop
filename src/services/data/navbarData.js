@@ -7,7 +7,7 @@ const navbarData = [
     {
         id: 2,
         title: 'All Products',
-        path: '/all-products',
+        path: '/allProducts',
     },
     {
         id: 3,

@@ -133,7 +133,7 @@ const Cart = () => {
                             </tbody>
                         </table>
                         <div className="flex justify-end mt-4 space-x-2">
-                            <Link to="/all-products">
+                            <Link to="/allProducts">
                                 <button className="px-6 py-3 text-sm text-gray-800 bg-gray-200 hover:bg-gray-400">
                                     Continue Shopping
                                 </button>

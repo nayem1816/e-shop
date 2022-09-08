@@ -13,6 +13,13 @@ const Header = () => {
     const [user, loading] = useAuthState(auth);
     const totalCart = useSelector((state) => state.cartReducer.cart.length);
 
+    // path location for active link
+    const path = window.location.pathname;
+
+    if (path === '/dashboard') {
+        return null;
+    }
+
     const logout = () => {
         signOut(auth);
     };
@@ -64,7 +71,9 @@ const Header = () => {
                                 {user.email}
                             </span>
                         </Dropdown.Header>
-                        <Dropdown.Item>Dashboard</Dropdown.Item>
+                        <Dropdown.Item>
+                            <a href="/dashboard">Dashboard</a>
+                        </Dropdown.Item>
                         <Dropdown.Item>Settings</Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
@@ -72,7 +81,7 @@ const Header = () => {
                 ) : loading ? (
                     <div role="status">
                         <svg
-                            class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-cyan-500"
+                            className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-cyan-500"
                             viewBox="0 0 100 101"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +95,7 @@ const Header = () => {
                                 fill="currentFill"
                             />
                         </svg>
-                        <span class="sr-only">Loading...</span>
+                        <span className="sr-only">Loading...</span>
                     </div>
                 ) : (
                     <Link to="/login">

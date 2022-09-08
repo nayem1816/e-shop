@@ -9,6 +9,11 @@ import {
 
 const Footer = () => {
     let year = new Date().getFullYear();
+    const path = window.location.pathname;
+
+    if (path === '/dashboard') {
+        return null;
+    }
     return (
         <div>
             <footer className="text-center text-white bg-black">

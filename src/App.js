@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import Login from './components/Login/Login';
 import SignUp from './components/Login/SignUp';
 import Protected from './components/Login/Protected';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
     return (
@@ -30,7 +31,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/all-products" element={<AllProducts />} />
+                    <Route path="/allProducts" element={<AllProducts />} />
                     <Route path="/shirt" element={<Shirt />} />
                     <Route path="/polo" element={<Polo />} />
                     <Route path="/jacket" element={<Jacket />} />
@@ -44,6 +45,7 @@ function App() {
                             </Protected>
                         }
                     />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="*" element={<h1>404 Not Found</h1>} />
                 </Routes>
             </div>
