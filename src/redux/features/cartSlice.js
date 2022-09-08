@@ -54,7 +54,13 @@ export const cartSlice = createSlice({
                 if (isProductInCart.quantity > 1) {
                     isProductInCart.quantity -= 1;
                 } else {
-                    alert('Quantity cannot be less than 1');
+                    toast.info('Product quantity cannot be less than 1', {
+                        position: 'bottom-center',
+                        autoClose: 1000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                    });
                 }
             }
             // add data to local storage
@@ -68,17 +74,25 @@ export const cartSlice = createSlice({
 
             if (isProductInCart) {
                 state.cart = state.cart.filter((product) => product.id !== id);
+                toast.success(`${isProductInCart.name} removed from cart`, {
+                    position: 'bottom-center',
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
             } else {
-                alert('This product is not in your cart');
+                toast.info('This product is not in your cart', {
+                    position: 'bottom-center',
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
             }
-            toast.warn(`${state.cart[0].name} remove from cart`, {
-                position: 'bottom-center',
-                autoClose: 1000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
+
             // add data to local storage
             localStorage.setItem('cart', JSON.stringify(state.cart));
         },

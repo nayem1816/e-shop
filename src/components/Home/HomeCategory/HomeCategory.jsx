@@ -6,7 +6,7 @@ import './HomeCategory.css';
 const HomeCategory = () => {
     return (
         <div className="my-10 container mx-auto">
-            <h2 className="text-center font-bold text-6xl">
+            <h2 className="text-center font-bold lg:text-6xl text-3xl">
                 This is what your shop could look <br /> like
             </h2>
             <p className="text-center lg:mx-20 mx-3 text-lg my-2">

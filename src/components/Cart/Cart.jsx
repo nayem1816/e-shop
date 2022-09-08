@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import {
     clearCart,
     removeFromCart,
@@ -10,6 +11,7 @@ import {
 const Cart = () => {
     const [data, setData] = useState([]);
     const cartData = useSelector((state) => state.cartReducer.cart);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setData(cartData);
@@ -37,6 +39,16 @@ const Cart = () => {
     };
     const handleClearBtn = () => {
         dispatch(clearCart());
+    };
+
+    const handleCheckoutBtn = () => {
+        toast.success('Checkout Successfully', {
+            position: 'top-center',
+            autoClose: 1500,
+            hideProgressBar: false,
+        });
+        dispatch(clearCart());
+        navigate('/');
     };
 
     return (
@@ -138,7 +150,10 @@ const Cart = () => {
                                     Continue Shopping
                                 </button>
                             </Link>
-                            <button className="px-6 py-3 text-sm text-gray-800 bg-gray-200 hover:bg-gray-400">
+                            <button
+                                onClick={() => handleCheckoutBtn()}
+                                className="px-6 py-3 text-sm text-gray-800 bg-gray-200 hover:bg-gray-400"
+                            >
                                 Proceed to Checkout
                             </button>
                         </div>
