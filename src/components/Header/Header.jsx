@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import eShopLogo from '../../images/Logo/e-shop-logo.png';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { Avatar, Dropdown, Navbar } from 'flowbite-react';
+import { Dropdown, Navbar, Avatar } from 'flowbite-react';
 import navbarData from './../../services/data/navbarData';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../Login/firebase.init';
@@ -16,7 +16,13 @@ const Header = () => {
     // path location for active link
     const path = window.location.pathname;
 
-    if (path === '/dashboard') {
+    if (
+        path === '/dashboard' ||
+        path === '/dashboard/orders' ||
+        path === '/dashboard/inbox' ||
+        path === '/dashboard/profile' ||
+        path === '/dashboard/products'
+    ) {
         return null;
     }
 
@@ -52,9 +58,9 @@ const Header = () => {
                         inline={true}
                         label={
                             <Avatar
-                                alt="avatar"
+                                alt="User settings"
                                 img={
-                                    user?.photoURL ||
+                                    user.photoURL ||
                                     'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
                                 }
                                 rounded={true}
@@ -74,7 +80,11 @@ const Header = () => {
                         </Dropdown.Item>
                         <Dropdown.Item>Settings</Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                        <Dropdown.Item>
+                            <a onClick={logout} href="/">
+                                Sign out
+                            </a>
+                        </Dropdown.Item>
                     </Dropdown>
                 ) : loading ? (
                     <div role="status">

@@ -24,6 +24,17 @@ const Login = React.lazy(() => import('./components/Login/Login'));
 const SignUp = React.lazy(() => import('./components/Login/SignUp'));
 const Dashboard = React.lazy(() => import('./components/Dashboard/Dashboard'));
 const Payment = React.lazy(() => import('./components/Cart/Payment'));
+const DashboardProfile = React.lazy(() =>
+    import('./components/Dashboard/DashboardProfile/DashboardProfile')
+);
+const Order = React.lazy(() => import('./components/Dashboard/Order/Order'));
+const Inbox = React.lazy(() => import('./components/Dashboard/Inbox/Inbox'));
+const Products = React.lazy(() =>
+    import('./components/Dashboard/Products/Products')
+);
+const DashboardHome = React.lazy(() =>
+    import('./components/Dashboard/DashboardHome/DashboardHome')
+);
 
 function App() {
     return (
@@ -64,7 +75,16 @@ function App() {
                                 </Protected>
                             }
                         />
-                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Dashboard />}>
+                            <Route path="" element={<DashboardHome />} />
+                            <Route path="orders" element={<Order />} />
+                            <Route path="inbox" element={<Inbox />} />
+                            <Route
+                                path="profile"
+                                element={<DashboardProfile />}
+                            />
+                            <Route path="products" element={<Products />} />
+                        </Route>
                         <Route path="*" element={<h1>404 Not Found</h1>} />
                     </Routes>
                 </Suspense>

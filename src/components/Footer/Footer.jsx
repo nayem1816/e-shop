@@ -11,7 +11,13 @@ const Footer = () => {
     let year = new Date().getFullYear();
     const path = window.location.pathname;
 
-    if (path === '/dashboard') {
+    if (
+        path === '/dashboard' ||
+        path === '/dashboard/orders' ||
+        path === '/dashboard/inbox' ||
+        path === '/dashboard/profile' ||
+        path === '/dashboard/products'
+    ) {
         return null;
     }
     return (

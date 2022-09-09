@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import DashboardHeader from './DashboardHeader/DashboardHeader';
-import DashboardCard from './DashboardCard/DashboardCard';
+import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
@@ -15,22 +15,7 @@ const Dashboard = () => {
                 </header>
                 <div className="container mx-auto body py-5 flex px-3 my-5 rounded w-full">
                     <div className="grid grid-cols-4 gap-x-4 gap-y-12 w-full">
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
-                        <DashboardCard />
+                        <Outlet />
                     </div>
                 </div>
             </div>
