@@ -98,14 +98,14 @@ export const cartSlice = createSlice({
         },
         clearCart: (state) => {
             state.cart = [];
-            toast.error('All product remove from cart', {
-                position: 'bottom-center',
-                autoClose: 1000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
+            // toast.error('All product remove from cart', {
+            //     position: 'bottom-center',
+            //     autoClose: 1000,
+            //     hideProgressBar: true,
+            //     closeOnClick: true,
+            //     pauseOnHover: true,
+            //     draggable: true,
+            // });
             // add data to local storage
             localStorage.setItem('cart', JSON.stringify(state.cart));
         },

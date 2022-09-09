@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import {
     clearCart,
     removeFromCart,
@@ -42,13 +41,7 @@ const Cart = () => {
     };
 
     const handleCheckoutBtn = () => {
-        toast.success('Checkout Successfully', {
-            position: 'top-center',
-            autoClose: 1500,
-            hideProgressBar: false,
-        });
-        dispatch(clearCart());
-        navigate('/');
+        navigate('/payment');
     };
 
     return (
@@ -108,7 +101,7 @@ const Cart = () => {
                                             </div>
                                         </td>
                                         <td className="p-4 px-6 text-center whitespace-nowrap">
-                                            ${item.price}
+                                            ${item.price * item.quantity}
                                         </td>
                                         <td className="p-4 px-6 text-center whitespace-nowrap">
                                             <button

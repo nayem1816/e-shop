@@ -23,6 +23,7 @@ const Cart = React.lazy(() => import('./components/Cart/Cart'));
 const Login = React.lazy(() => import('./components/Login/Login'));
 const SignUp = React.lazy(() => import('./components/Login/SignUp'));
 const Dashboard = React.lazy(() => import('./components/Dashboard/Dashboard'));
+const Payment = React.lazy(() => import('./components/Cart/Payment'));
 
 function App() {
     return (
@@ -52,6 +53,14 @@ function App() {
                             element={
                                 <Protected>
                                     <Cart />
+                                </Protected>
+                            }
+                        />
+                        <Route
+                            path="/payment"
+                            element={
+                                <Protected>
+                                    <Payment />
                                 </Protected>
                             }
                         />

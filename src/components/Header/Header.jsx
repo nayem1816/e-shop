@@ -30,11 +30,9 @@ const Header = () => {
 
     return (
         <Navbar className="container" rounded={true}>
-            {/* <Navbar.Brand href="/"> */}
-            <Link to="/">
+            <Navbar.Brand href="/">
                 <img className="h-16 inline" src={eShopLogo} alt="logo" />
-            </Link>
-            {/* </Navbar.Brand> */}
+            </Navbar.Brand>
             <div className="flex md:order-2 gap-4">
                 <Link
                     className="text-2xl text-cyan-500 hover:text-cyan-700 duration-500 
@@ -54,9 +52,9 @@ const Header = () => {
                         inline={true}
                         label={
                             <Avatar
-                                alt="User settings"
+                                alt="avatar"
                                 img={
-                                    user.photoURL ||
+                                    user?.photoURL ||
                                     'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
                                 }
                                 rounded={true}
