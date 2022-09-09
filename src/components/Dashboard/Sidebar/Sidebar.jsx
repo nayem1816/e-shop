@@ -10,7 +10,9 @@ const Sidebar = () => {
     };
     return (
         <aside className="w-64 h-full" aria-label="Sidebar">
-            <div className="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 h-full shadow fixed w-64 z-50">
+            <div
+                className={`overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 h-full shadow fixed w-64 z-50`}
+            >
                 <a
                     href="/"
                     className="flex items-center pl-2.5 mb-5 justify-center"
@@ -128,9 +130,9 @@ const Sidebar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link
+                        <a
                             onClick={logout}
-                            to="/"
+                            href="/"
                             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <svg
@@ -149,7 +151,7 @@ const Sidebar = () => {
                             <span className="flex-1 ml-3 whitespace-nowrap">
                                 Sign Out
                             </span>
-                        </Link>
+                        </a>
                     </li>
                 </ul>
             </div>
