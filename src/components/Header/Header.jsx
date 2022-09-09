@@ -76,12 +76,18 @@ const Header = () => {
                             </span>
                         </Dropdown.Header>
                         <Dropdown.Item>
-                            <a href="/dashboard">Dashboard</a>
+                            <a className="w-full" href="/dashboard">
+                                Dashboard
+                            </a>
                         </Dropdown.Item>
-                        <Dropdown.Item>Settings</Dropdown.Item>
+                        <Dropdown.Item>
+                            <a className="w-full" href="/dashboard">
+                                Sittings
+                            </a>
+                        </Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item>
-                            <a onClick={logout} href="/">
+                            <a className="w-full" onClick={logout} href="/">
                                 Sign out
                             </a>
                         </Dropdown.Item>
