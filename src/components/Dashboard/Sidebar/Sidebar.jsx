@@ -2,7 +2,6 @@ import React from 'react';
 import eShopLogo from '../../../images/Logo/e-shop-logo.png';
 import { signOut } from 'firebase/auth';
 import auth from './../../Login/firebase.init';
-import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const logout = () => {
@@ -21,8 +20,8 @@ const Sidebar = () => {
                 </a>
                 <ul className="space-y-3 my-10">
                     <li>
-                        <Link
-                            to=""
+                        <a
+                            href="/dashboard"
                             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <svg
@@ -36,11 +35,11 @@ const Sidebar = () => {
                                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                             </svg>
                             <span className="ml-3">Dashboard</span>
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link
-                            to="/dashboard/orders"
+                        <a
+                            href="/dashboard/orders"
                             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <svg
@@ -58,11 +57,11 @@ const Sidebar = () => {
                             <span className="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">
                                 {/* Pro */}
                             </span>
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link
-                            to="/dashboard/inbox"
+                        <a
+                            href="/dashboard/inbox"
                             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <svg
@@ -81,11 +80,11 @@ const Sidebar = () => {
                             <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
                                 3
                             </span>
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link
-                            to="/dashboard/profile"
+                        <a
+                            href="/dashboard/profile"
                             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <svg
@@ -104,11 +103,11 @@ const Sidebar = () => {
                             <span className="flex-1 ml-3 whitespace-nowrap">
                                 Profile
                             </span>
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link
-                            to="/dashboard/products"
+                        <a
+                            href="/dashboard/products"
                             className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             <svg
@@ -127,7 +126,7 @@ const Sidebar = () => {
                             <span className="flex-1 ml-3 whitespace-nowrap">
                                 Products
                             </span>
-                        </Link>
+                        </a>
                     </li>
                     <li>
                         <a
